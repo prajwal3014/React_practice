@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react'
+import Header from './Components/Header'
+import Footer from './Components/Footer'
+import AddTodo from './Components/AddTodo'
+import Display from './Components/Display'
 
 function App() {
+  const [data, setData] = useState()
+
+  useEffect(() => {
+    fetch("/hello").then(
+      res => res.json()
+    ).then(
+      data => {
+        setData(data)
+        console.log(data)
+      }
+    )
+  }, [])
+
+  const [add, setAdd] = useState()
+
+  useEffect(() => {
+    fetch("/add").then(
+      res => res.json()
+    ).then(
+      add => {
+        setAdd(add)
+        console.log(add)
+      }
+    )
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <Header/>
+    <AddTodo/>
+    <Display data = {data} add = {add}/>
+    <Footer/>
+    </>
+  )
 }
 
-export default App;
+export default App
