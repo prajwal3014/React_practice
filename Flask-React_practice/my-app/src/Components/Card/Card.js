@@ -7,11 +7,8 @@ export default function Card({ listOfTodos }) {
                 return (
                     <>
                         <div className="container my-3">
-                            <h3 key={todo.sno}>
-                                {todo.title}
-                            </h3>
                             <h5 key={todo.sno}>
-                                {todo.desc}
+                                {todo.title}
                             </h5>
                             <form action="/delete" method="post">
                                 <button value={todo.sno} name='delete-btn' className='btn btn-sm btn-danger'>Delete</button>
