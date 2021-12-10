@@ -29,9 +29,8 @@ def get_todos() :
     lst = query.fetchall()
     for todo in lst :
         todo = list(todo)
-        sample_dict = {todo[1] : todo[2], "sno" : todo[0]}
+        sample_dict = {"title" : todo[1], "desc" : todo[2], "sno" : todo[0]}
         todos_list.append(sample_dict)
-        # sample_dict.clear()
 
     return todos_list
 # print(get_todos())

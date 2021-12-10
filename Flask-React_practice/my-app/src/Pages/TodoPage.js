@@ -15,6 +15,19 @@ export default function TodoPage() {
         })
     }, [])
     
+    const [deleteTodo, setDeleteTodo] = useState([])
+
+    useEffect(() => {
+        fetch('/delete').then(response => {
+            if(response.ok){
+                return response.json()
+            }
+        }).then(data => {
+            setDeleteTodo(data)
+            console.log(data)
+        })
+    }, [])
+
     return (
         <>
            <Card listOfTodos = {todo}/>

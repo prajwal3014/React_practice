@@ -3,15 +3,24 @@ import React from 'react'
 export default function Card({ listOfTodos }) {
     return (
         <>
-            <ul>
-                {listOfTodos.map(todo => {
-                    return (
-                        <li key={todo.sno}>
-                            {todo.content}
-                        </li>
-                    )
-                })}
-            </ul>
+            {listOfTodos.map(todo => {
+                return (
+                    <>
+                        <div className="container my-3">
+                            <h3 key={todo.sno}>
+                                {todo.title}
+                            </h3>
+                            <h5 key={todo.sno}>
+                                {todo.desc}
+                            </h5>
+                            <form action="/delete" method="post">
+                                <button value={todo.sno} name='delete-btn' className='btn btn-sm btn-danger'>Delete</button>
+                            </form>
+                            <hr />
+                        </div>
+                    </>
+                )
+            })}
         </>
     )
 }
