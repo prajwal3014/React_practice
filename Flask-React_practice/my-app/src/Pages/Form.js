@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function Form() {
+export default function Form({ userInput }) {
     return (
         <div className="container">
             <h2>Add a todo item...!</h2>
             <form>
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
-                    <input type="email" className="form-control" id="title" aria-describedby="emailHelp" />
+                    <input type="email" className="form-control" id="title" value={userInput} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="desc" className="form-label">Description</label>

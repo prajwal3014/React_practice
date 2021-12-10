@@ -1,12 +1,13 @@
-import React,{useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from '../Components/Card/Card'
+import Form from './Pages/Form';
 
 export default function TodoPage() {
     const [todo, setTodo] = useState([])
 
     useEffect(() => {
         fetch('/api').then(response => {
-            if(response.ok){
+            if (response.ok) {
                 return response.json()
             }
         }).then(data => {
@@ -14,23 +15,13 @@ export default function TodoPage() {
             console.log(data)
         })
     }, [])
-    
-    const [deleteTodo, setDeleteTodo] = useState([])
 
-    useEffect(() => {
-        fetch('/delete').then(response => {
-            if(response.ok){
-                return response.json()
-            }
-        }).then(data => {
-            setDeleteTodo(data)
-            console.log(data)
-        })
-    }, [])
+    const [addTodo, setAddTodo] = useState('')
 
     return (
         <>
-           <Card listOfTodos = {todo}/>
+            <Form userInput={addTodo} />
+            <Card listOfTodos={todo} />
         </>
     )
 }
